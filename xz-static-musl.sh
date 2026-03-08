@@ -92,56 +92,56 @@ sudo mount --rbind /dev "./pasta/dev/"
 sudo mount --rbind /sys "./pasta/sys/"
 sudo chroot ./pasta/ /bin/sh -c "set -e && apk update && apk add build-base \
 musl-dev \
-wget && \
-make && \
-clang && \
-git && \
-xz-dev && \
-libintl && \
-libbsd-static && \
-libsemanage-dev && \
-libselinux-utils && \
-libselinux-static && \
-xz-libs && \
-zlib && \
-zlib-static && \
-libselinux-dev && \
-libssl3 && \
-libbsd && \
-libbsd-dev && \
-gettext-libs && \
-gettext-static && \
-gettext-dev && \
-gettext && \
-python3 && \
-openssl-misc && \
-openssl-libs-static && \
-openssl && \
-zlib-dev && \
-xz-dev && \
-openssl-dev && \
-automake && \
-libtool && \
-bison && \
-flex && \
-gettext && \
-autoconf && \
-gettext && \
-sqlite && \
-sqlite-dev && \
-pcre-dev && \
-wget && \
-texinfo && \
-docbook-xsl && \
-libxslt && \
-docbook2x && \
-gettext-dev && \
-gettext-static && \
+wget \
+make \
+clang \
+git \
+xz-dev \
+libintl \
+libbsd-static \
+xz-libs \
+zlib \
+zlib-static \
+libselinux-dev \
+libssl3 \
+libbsd \
+libbsd-dev \
+gettext-libs \
+gettext-static \
+gettext-dev \
+gettext \
+python3 \
+openssl-misc \
+openssl-libs-static \
+openssl \
+zlib-dev \
+xz-dev \
+openssl-dev \
+automake \
+libtool \
+bison \
+flex \
+gettext \
+autoconf \
+gettext \
+sqlite \
+sqlite-dev \
+pcre-dev \
+wget \
+texinfo \
+docbook-xsl \
+libxslt \
+docbook2x \
+gettext-dev \
+gettext-static \
+autoconf \
+automake \
+upx \
 perl && \
 tar xf xz-${XZ_VERSION}.tar.gz && \
 cd xz-${XZ_VERSION}/ && \
-./configure CC=clang --enable-static --disable-shared LDFLAGS='-static -Wl,--gc-sections -ffunction-sections -fdata-sections' CFLAGS='-Os -Wno-unterminated-string-initialization' && \
-make -j\$(nproc) CC=clang LDFLAGS='--static -Wl,--gc-sections -ffunction-sections -fdata-sections' && \
+./configure CC=clang --enable-static --disable-shared --disable-nls LDFLAGS='-static -Wl,--gc-sections -ffunction-sections -fdata-sections' CFLAGS='-Os -Wno-unterminated-string-initialization' && \
+CC=clang LDFLAGS='--static -Wl,--gc-sections -ffunction-sections -fdata-sections' make -j\$(nproc) && \
 strip src/xz/xz && \
 upx --lzma src/xz/xz"
 mkdir -p dist
